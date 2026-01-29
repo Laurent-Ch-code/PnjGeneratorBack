@@ -1,0 +1,6 @@
+﻿################################################################################
+# Ce fichier .gitignore a été automatiquement créé par Microsoft(R) Visual Studio.
+################################################################################
+
+/back-pnj-generator/pnj-generator/.vs
+/back-pnj-generator/pnj-generator/bin/Debug/net8.0
