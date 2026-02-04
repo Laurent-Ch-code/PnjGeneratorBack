@@ -1,7 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using pnj_generator.Models;
-using System.Collections.Generic;
-using System.Reflection.Emit;
 
 namespace pnj_generator.Data
 {
@@ -12,6 +10,7 @@ namespace pnj_generator.Data
         }
         public DbSet<Universe> Universes { get; set; } = default!;
         public DbSet<Weapons> Weapons { get; set; } = default!;
+        public DbSet<Equipment> Equipments { get; set; } = default!;
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -39,6 +38,19 @@ namespace pnj_generator.Data
                       .HasForeignKey(w => w.UniverseId)
                       .IsRequired()
                       .OnDelete(DeleteBehavior.Cascade); // si l'univers est supprimé, les armes aussi
+            });
+
+            modelBuilder.Entity<Equipment>(entity =>
+            {
+                entity.ToTable("equipments");
+                entity.HasKey(e => e.Id);
+                entity.Property(e => e.Name).IsRequired().HasMaxLength(200);
+                // Relation obligatoire : Equipment → Universe
+                entity.HasOne(e => e.Universe)
+                      .WithMany(u => u.Equipments) // Universe doit avoir ICollection<Equipment> Equipments
+                      .HasForeignKey(e => e.UniverseId)
+                      .IsRequired()
+                      .OnDelete(DeleteBehavior.Cascade); // si l'univers est supprimé, les équipements aussi
             });
         }
     }

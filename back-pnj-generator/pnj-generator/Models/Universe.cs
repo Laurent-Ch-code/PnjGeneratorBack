@@ -9,5 +9,6 @@
         public string DiceRule { get; set; } = string.Empty;
 
         public ICollection<Weapons> Weapons { get; set; } = new List<Weapons>();
+        public ICollection<Equipment> Equipments { get; set; } = new List<Equipment>();
     }
 }

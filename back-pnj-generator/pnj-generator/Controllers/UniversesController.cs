@@ -37,7 +37,7 @@ public class UniversesController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<ActionResult<Universe>> Create(UniverseCreateDto dto)
+    public async Task<ActionResult<Universe>> Create(UniverseCreateDTO dto)
     {
         var universe = new Universe
         {
@@ -55,7 +55,7 @@ public class UniversesController : ControllerBase
     }
 
     [HttpPut("{id:guid}")]
-    public async Task<IActionResult> Update(Guid id, UniverseCreateDto dto)
+    public async Task<IActionResult> Update(Guid id, UniverseCreateDTO dto)
     {
         var universe = await _db.Universes.FindAsync(id);
         if (universe is null) return NotFound();

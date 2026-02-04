@@ -1,6 +1,6 @@
 ﻿namespace pnj_generator.DTOs
 {
-    public class UniverseCreateDto
+    public class UniverseCreateDTO
     {
         public string Name { get; set; } = string.Empty;
         public string Era { get; set; } = string.Empty;
