@@ -7,7 +7,7 @@ using pnj_generator.DTOs;
 namespace pnj_generator.Controllers
 {
     [ApiController]
-    [Route("api/equipments")]
+    [Route("api/universes/{universeId:guid}/equipments")]
     public class EquipmentController: ControllerBase
     {
         private readonly AppDbContext _db;
@@ -18,15 +18,17 @@ namespace pnj_generator.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<Equipment>>> GetAllEquipment()
+        public async Task<ActionResult<List<Equipment>>> GetAllEquipment(Guid universeId)
         {
-            var equipments = await _db.Equipments.ToListAsync();
+            var equipments = await _db.Equipments
+                .Where(w => w.UniverseId == universeId)
+                .ToListAsync();
             // Implementation for retrieving all equipment
             return Ok(equipments);
         }
 
         [HttpGet("{id:guid}")]
-        public async Task<ActionResult<Equipment>> GetEquipmentById(Guid id)
+        public async Task<ActionResult<Equipment>> GetEquipmentById(Guid universeId,Guid id)
         {
             var equipment = await _db.Equipments.FindAsync(id);
             if (equipment is null) return NotFound();
@@ -34,7 +36,7 @@ namespace pnj_generator.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<Equipment>> CreateEquipment(EquipmentCreateDTO dto)
+        public async Task<ActionResult<Equipment>> CreateEquipment(Guid universeId,EquipmentCreateDTO dto)
         {
             var equipment = new Equipment
             {
@@ -48,11 +50,11 @@ namespace pnj_generator.Controllers
             };
             _db.Equipments.Add(equipment);
             await _db.SaveChangesAsync();
-            return CreatedAtAction(nameof(GetEquipmentById), new { id = equipment.Id }, equipment);
+            return CreatedAtAction(nameof(GetEquipmentById), new { universeId = universeId, id = equipment.Id }, equipment);
         }
 
         [HttpPut("{id:guid}")]
-        public async Task<IActionResult> UpdateEquipment(Guid id, EquipmentCreateDTO dto)
+        public async Task<IActionResult> UpdateEquipment(Guid universeId, Guid id, EquipmentCreateDTO dto)
         {
             var equipment = await _db.Equipments.FindAsync(id);
             if (equipment is null) return NotFound();
@@ -67,10 +69,14 @@ namespace pnj_generator.Controllers
         }
 
         [HttpDelete("{id:guid}")]
-        public async Task<IActionResult> DeleteEquipment(Guid id)
+        public async Task<IActionResult> DeleteEquipment(Guid universeId, Guid id)
         {
-            var equipment = await _db.Equipments.FindAsync(id);
-            if (equipment is null) return NotFound();
+            var equipment = await _db.Equipments
+                .FirstOrDefaultAsync(e => e.Id == id && e.UniverseId == universeId);
+
+            if (equipment is null)
+                return NotFound();
+
             _db.Equipments.Remove(equipment);
             await _db.SaveChangesAsync();
             return NoContent();

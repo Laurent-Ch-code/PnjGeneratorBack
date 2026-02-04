@@ -5,10 +5,21 @@
     "version": "1.0"
   },
   "paths": {
-    "/api/equipments": {
+    "/api/universes/{universeId}/equipments": {
       "get": {
         "tags": [
           "Equipment"
+        ],
+        "parameters": [
+          {
+            "name": "universeId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
         ],
         "responses": {
           "200": {
@@ -45,6 +56,17 @@
       "post": {
         "tags": [
           "Equipment"
+        ],
+        "parameters": [
+          {
+            "name": "universeId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
         ],
         "requestBody": {
           "content": {
@@ -89,12 +111,21 @@
         }
       }
     },
-    "/api/equipments/{id}": {
+    "/api/universes/{universeId}/equipments/{id}": {
       "get": {
         "tags": [
           "Equipment"
         ],
         "parameters": [
+          {
+            "name": "universeId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
           {
             "name": "id",
             "in": "path",
@@ -133,6 +164,15 @@
           "Equipment"
         ],
         "parameters": [
+          {
+            "name": "universeId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
           {
             "name": "id",
             "in": "path",
@@ -173,6 +213,15 @@
           "Equipment"
         ],
         "parameters": [
+          {
+            "name": "universeId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
           {
             "name": "id",
             "in": "path",
@@ -375,10 +424,21 @@
         }
       }
     },
-    "/api/weapons": {
+    "/api/universes/{universeId}/weapons": {
       "get": {
         "tags": [
           "Weapons"
+        ],
+        "parameters": [
+          {
+            "name": "universeId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
         ],
         "responses": {
           "200": {
@@ -415,6 +475,17 @@
       "post": {
         "tags": [
           "Weapons"
+        ],
+        "parameters": [
+          {
+            "name": "universeId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
         ],
         "requestBody": {
           "content": {
@@ -459,12 +530,21 @@
         }
       }
     },
-    "/api/weapons/{id}": {
+    "/api/universes/{universeId}/weapons/{id}": {
       "get": {
         "tags": [
           "Weapons"
         ],
         "parameters": [
+          {
+            "name": "universeId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
           {
             "name": "id",
             "in": "path",
@@ -503,6 +583,15 @@
           "Weapons"
         ],
         "parameters": [
+          {
+            "name": "universeId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
           {
             "name": "id",
             "in": "path",
@@ -543,6 +632,15 @@
           "Weapons"
         ],
         "parameters": [
+          {
+            "name": "universeId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
           {
             "name": "id",
             "in": "path",

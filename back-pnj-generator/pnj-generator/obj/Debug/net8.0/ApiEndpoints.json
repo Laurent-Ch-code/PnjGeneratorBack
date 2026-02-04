@@ -1,114 +1,5 @@
 [
   {
-    "ContainingType": "pnj_generator.Controllers.EquipmentController",
-    "Method": "GetAllEquipment",
-    "RelativePath": "api/equipments",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": [
-      {
-        "Type": "System.Collections.Generic.List\u00601[[pnj_generator.Models.Equipment, pnj-generator, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
-  },
-  {
-    "ContainingType": "pnj_generator.Controllers.EquipmentController",
-    "Method": "CreateEquipment",
-    "RelativePath": "api/equipments",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "dto",
-        "Type": "pnj_generator.DTOs.EquipmentCreateDTO",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": [
-      {
-        "Type": "pnj_generator.Models.Equipment",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
-  },
-  {
-    "ContainingType": "pnj_generator.Controllers.EquipmentController",
-    "Method": "GetEquipmentById",
-    "RelativePath": "api/equipments/{id}",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Guid",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": [
-      {
-        "Type": "pnj_generator.Models.Equipment",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
-  },
-  {
-    "ContainingType": "pnj_generator.Controllers.EquipmentController",
-    "Method": "UpdateEquipment",
-    "RelativePath": "api/equipments/{id}",
-    "HttpMethod": "PUT",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Guid",
-        "IsRequired": true
-      },
-      {
-        "Name": "dto",
-        "Type": "pnj_generator.DTOs.EquipmentCreateDTO",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "pnj_generator.Controllers.EquipmentController",
-    "Method": "DeleteEquipment",
-    "RelativePath": "api/equipments/{id}",
-    "HttpMethod": "DELETE",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Guid",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
     "ContainingType": "PnjGenerator.Controllers.UniversesController",
     "Method": "GetAll",
     "RelativePath": "api/universes",
@@ -218,13 +109,154 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "pnj_generator.Controllers.WeaponsController",
-    "Method": "GetAllWeapons",
-    "RelativePath": "api/weapons",
+    "ContainingType": "pnj_generator.Controllers.EquipmentController",
+    "Method": "GetAllEquipment",
+    "RelativePath": "api/universes/{universeId}/equipments",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
-    "Parameters": [],
+    "Parameters": [
+      {
+        "Name": "universeId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[pnj_generator.Models.Equipment, pnj-generator, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "pnj_generator.Controllers.EquipmentController",
+    "Method": "CreateEquipment",
+    "RelativePath": "api/universes/{universeId}/equipments",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "universeId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "dto",
+        "Type": "pnj_generator.DTOs.EquipmentCreateDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "pnj_generator.Models.Equipment",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "pnj_generator.Controllers.EquipmentController",
+    "Method": "GetEquipmentById",
+    "RelativePath": "api/universes/{universeId}/equipments/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "universeId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "pnj_generator.Models.Equipment",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "pnj_generator.Controllers.EquipmentController",
+    "Method": "UpdateEquipment",
+    "RelativePath": "api/universes/{universeId}/equipments/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "universeId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "dto",
+        "Type": "pnj_generator.DTOs.EquipmentCreateDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "pnj_generator.Controllers.EquipmentController",
+    "Method": "DeleteEquipment",
+    "RelativePath": "api/universes/{universeId}/equipments/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "universeId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "pnj_generator.Controllers.WeaponsController",
+    "Method": "GetAllWeapons",
+    "RelativePath": "api/universes/{universeId}/weapons",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "universeId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": [
       {
         "Type": "System.Collections.Generic.List\u00601[[pnj_generator.Models.Weapons, pnj-generator, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
@@ -240,11 +272,16 @@
   {
     "ContainingType": "pnj_generator.Controllers.WeaponsController",
     "Method": "CreateWeapon",
-    "RelativePath": "api/weapons",
+    "RelativePath": "api/universes/{universeId}/weapons",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
+      {
+        "Name": "universeId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
       {
         "Name": "dto",
         "Type": "pnj_generator.DTOs.WeaponsCreateDTO",
@@ -266,11 +303,16 @@
   {
     "ContainingType": "pnj_generator.Controllers.WeaponsController",
     "Method": "GetWeaponById",
-    "RelativePath": "api/weapons/{id}",
+    "RelativePath": "api/universes/{universeId}/weapons/{id}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
+      {
+        "Name": "universeId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
       {
         "Name": "id",
         "Type": "System.Guid",
@@ -292,11 +334,16 @@
   {
     "ContainingType": "pnj_generator.Controllers.WeaponsController",
     "Method": "UpdateWeapon",
-    "RelativePath": "api/weapons/{id}",
+    "RelativePath": "api/universes/{universeId}/weapons/{id}",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
     "Parameters": [
+      {
+        "Name": "universeId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
       {
         "Name": "id",
         "Type": "System.Guid",
@@ -313,11 +360,16 @@
   {
     "ContainingType": "pnj_generator.Controllers.WeaponsController",
     "Method": "DeleteWeapon",
-    "RelativePath": "api/weapons/{id}",
+    "RelativePath": "api/universes/{universeId}/weapons/{id}",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
     "Parameters": [
+      {
+        "Name": "universeId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
       {
         "Name": "id",
         "Type": "System.Guid",

@@ -7,7 +7,7 @@ using pnj_generator.Models;
 namespace pnj_generator.Controllers
 {
     [ApiController]
-    [Route("api/weapons")]
+    [Route("api/universes/{universeId:guid}/weapons")]
     public class WeaponsController: ControllerBase
     {
         private readonly AppDbContext _db;
@@ -17,15 +17,18 @@ namespace pnj_generator.Controllers
             _db = db;
         }
 
+        
         [HttpGet]
-        public async Task<ActionResult<List<Weapons>>> GetAllWeapons()
+        public async Task<ActionResult<List<Weapons>>> GetAllWeapons(Guid universeId)
         {
-            var weapons = await _db.Weapons.ToListAsync();
+            var weapons = await _db.Weapons
+                .Where(w => w.UniverseId == universeId)
+                .ToListAsync();
             return Ok(weapons);
         }
 
         [HttpGet("{id:guid}")]
-        public async Task<ActionResult<Weapons>> GetWeaponById(Guid id)
+        public async Task<ActionResult<Weapons>> GetWeaponById(Guid universeId,Guid id)
         {
             var weapon = await _db.Weapons.FindAsync(id);
             if (weapon is null) return NotFound();
@@ -33,7 +36,7 @@ namespace pnj_generator.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<Weapons>> CreateWeapon(WeaponsCreateDTO dto)
+        public async Task<ActionResult<Weapons>> CreateWeapon(Guid universeId,WeaponsCreateDTO dto)
         {
             var weapon = new Weapons
             {
@@ -51,11 +54,11 @@ namespace pnj_generator.Controllers
 
             _db.Weapons.Add(weapon);
             await _db.SaveChangesAsync();
-            return CreatedAtAction(nameof(GetWeaponById), new { id = weapon.Id }, weapon);
+            return CreatedAtAction(nameof(GetWeaponById), new { universeId = universeId, id = weapon.Id }, weapon);
         }
 
         [HttpPut("{id:guid}")]
-        public async Task<IActionResult> UpdateWeapon(Guid id, WeaponsCreateDTO dto)
+        public async Task<IActionResult> UpdateWeapon(Guid universeId,Guid id, WeaponsCreateDTO dto)
         {
             var weapon = await _db.Weapons.FindAsync(id);
             if (weapon is null) return NotFound();
@@ -75,10 +78,14 @@ namespace pnj_generator.Controllers
         }
 
         [HttpDelete("{id:guid}")]
-        public async Task<IActionResult> DeleteWeapon(Guid id)
+        public async Task<IActionResult> DeleteWeapon(Guid universeId, Guid id)
         {
-            var weapon = await _db.Weapons.FindAsync(id);
-            if (weapon is null) return NotFound();
+            var weapon = await _db.Weapons
+                .FirstOrDefaultAsync(w => w.Id == id && w.UniverseId == universeId);
+
+            if (weapon is null)
+                return NotFound();
+
             _db.Weapons.Remove(weapon);
             await _db.SaveChangesAsync();
             return NoContent();
