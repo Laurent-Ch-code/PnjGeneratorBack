@@ -16,9 +16,9 @@ namespace pnj_generator.Models
         public string Damage { get; set; } = string.Empty;
         public string Range { get; set; } = string.Empty;
         public string Description { get; set; } = string.Empty;
-        public int Capacity { get; set; } = 0;
-        public int radius { get; set; } = 0;
-        public WeaponFireMode weaponFireMode { get; set; } = WeaponFireMode.Single;
+        public int? Capacity { get; set; } = null;
+        public int? Radius { get; set; } = null;
+        public WeaponFireMode WeaponFireMode { get; set; } = WeaponFireMode.Single;
 
     }
 

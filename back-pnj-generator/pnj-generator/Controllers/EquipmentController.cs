@@ -58,6 +58,7 @@ namespace pnj_generator.Controllers
         {
             var equipment = await _db.Equipments.FindAsync(id);
             if (equipment is null) return NotFound();
+
             equipment.Name = dto.Name;
             equipment.Type = dto.Type;
             equipment.Description = dto.Description;
@@ -65,7 +66,7 @@ namespace pnj_generator.Controllers
             equipment.Malus = dto.Malus;
             equipment.UniverseId = dto.UniverseId;
             await _db.SaveChangesAsync();
-            return NoContent();
+            return Ok(equipment);
         }
 
         [HttpDelete("{id:guid}")]
