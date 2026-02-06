@@ -1,6 +1,6 @@
-﻿using pnj_generator.Models;
+﻿using pnj_generator.Models.Features;
 
-namespace pnj_generator.DTOs
+namespace pnj_generator.DTOs.Features
 {
     public class WeaponsCreateDTO
     {

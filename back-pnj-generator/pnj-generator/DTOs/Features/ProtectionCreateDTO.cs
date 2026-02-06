@@ -1,4 +1,4 @@
-namespace pnj_generator.DTOs
+namespace pnj_generator.DTOs.Features
 {
     public class ProtectionCreateDTO
     {

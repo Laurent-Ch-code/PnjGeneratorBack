@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("pnj-generator")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+eaee4b6b541f1ccbf05b1a0c2cd7dfd70d66f205")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7989efa69e4c977b50487447f382cb06826d3ef5")]
 [assembly: System.Reflection.AssemblyProductAttribute("pnj-generator")]
 [assembly: System.Reflection.AssemblyTitleAttribute("pnj-generator")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

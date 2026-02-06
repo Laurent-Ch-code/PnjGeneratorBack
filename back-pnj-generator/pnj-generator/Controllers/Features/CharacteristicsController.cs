@@ -1,10 +1,10 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using pnj_generator.Data;
-using pnj_generator.DTOs;
-using pnj_generator.Models;
+using pnj_generator.DTOs.Features;
+using pnj_generator.Models.Features;
 
-namespace pnj_generator.Controllers
+namespace pnj_generator.Controllers.Features
 {
     [ApiController]
     [Route("api/universes/{universeId:guid}/characteristics")]

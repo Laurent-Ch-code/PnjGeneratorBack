@@ -1,9 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace pnj_generator.Models
+namespace pnj_generator.Models.Features
 {
-    public class Equipment
+    public class Weapons
     {
         [Key]
         public Guid Id { get; set; }
@@ -13,8 +13,19 @@ namespace pnj_generator.Models
         public Guid UniverseId { get; set; }
         public string Name { get; set; } = string.Empty;
         public string Type { get; set; } = string.Empty;
+        public string Damage { get; set; } = string.Empty;
+        public string Range { get; set; } = string.Empty;
         public string Description { get; set; } = string.Empty;
-        public string Bonus { get; set; } = string.Empty;
-        public string Malus { get; set; } = string.Empty;
+        public int Capacity { get; set; } = 0;
+        public int Radius { get; set; } = 0;
+        public WeaponFireMode WeaponFireMode { get; set; } = WeaponFireMode.Single;
+
+    }
+
+    public enum WeaponFireMode { 
+        None = -1,
+        Single = 0,
+        Burst = 1,
+        Automatic = 2
     }
 }

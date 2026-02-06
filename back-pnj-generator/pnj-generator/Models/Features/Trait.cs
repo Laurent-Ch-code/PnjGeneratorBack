@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace pnj_generator.Models
+namespace pnj_generator.Models.Features
 {
     /// <summary>
     /// Représente un trait (Ambidextre, Vision nocturne, Berserker, etc.)

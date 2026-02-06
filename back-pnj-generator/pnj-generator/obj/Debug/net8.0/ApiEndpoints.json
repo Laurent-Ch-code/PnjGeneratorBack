@@ -109,7 +109,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "pnj_generator.Controllers.CharacteristicsController",
+    "ContainingType": "pnj_generator.Controllers.Features.CharacteristicsController",
     "Method": "GetAllCharacteristics",
     "RelativePath": "api/universes/{universeId}/characteristics",
     "HttpMethod": "GET",
@@ -124,7 +124,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.List\u00601[[pnj_generator.Models.Characteristic, pnj-generator, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.List\u00601[[pnj_generator.Models.Features.Characteristic, pnj-generator, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -135,7 +135,7 @@
     ]
   },
   {
-    "ContainingType": "pnj_generator.Controllers.CharacteristicsController",
+    "ContainingType": "pnj_generator.Controllers.Features.CharacteristicsController",
     "Method": "CreateCharacteristic",
     "RelativePath": "api/universes/{universeId}/characteristics",
     "HttpMethod": "POST",
@@ -149,13 +149,13 @@
       },
       {
         "Name": "dto",
-        "Type": "pnj_generator.DTOs.CharacteristicCreateDTO",
+        "Type": "pnj_generator.DTOs.Features.CharacteristicCreateDTO",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "pnj_generator.Models.Characteristic",
+        "Type": "pnj_generator.Models.Features.Characteristic",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -166,7 +166,7 @@
     ]
   },
   {
-    "ContainingType": "pnj_generator.Controllers.CharacteristicsController",
+    "ContainingType": "pnj_generator.Controllers.Features.CharacteristicsController",
     "Method": "GetCharacteristicById",
     "RelativePath": "api/universes/{universeId}/characteristics/{id}",
     "HttpMethod": "GET",
@@ -186,7 +186,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "pnj_generator.Models.Characteristic",
+        "Type": "pnj_generator.Models.Features.Characteristic",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -197,7 +197,7 @@
     ]
   },
   {
-    "ContainingType": "pnj_generator.Controllers.CharacteristicsController",
+    "ContainingType": "pnj_generator.Controllers.Features.CharacteristicsController",
     "Method": "UpdateCharacteristic",
     "RelativePath": "api/universes/{universeId}/characteristics/{id}",
     "HttpMethod": "PUT",
@@ -216,14 +216,14 @@
       },
       {
         "Name": "dto",
-        "Type": "pnj_generator.DTOs.CharacteristicCreateDTO",
+        "Type": "pnj_generator.DTOs.Features.CharacteristicCreateDTO",
         "IsRequired": true
       }
     ],
     "ReturnTypes": []
   },
   {
-    "ContainingType": "pnj_generator.Controllers.CharacteristicsController",
+    "ContainingType": "pnj_generator.Controllers.Features.CharacteristicsController",
     "Method": "DeleteCharacteristic",
     "RelativePath": "api/universes/{universeId}/characteristics/{id}",
     "HttpMethod": "DELETE",
@@ -244,7 +244,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "pnj_generator.Controllers.EquipmentController",
+    "ContainingType": "pnj_generator.Controllers.Features.EquipmentController",
     "Method": "GetAllEquipment",
     "RelativePath": "api/universes/{universeId}/equipments",
     "HttpMethod": "GET",
@@ -259,7 +259,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.List\u00601[[pnj_generator.Models.Equipment, pnj-generator, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.List\u00601[[pnj_generator.Models.Features.Equipment, pnj-generator, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -270,7 +270,7 @@
     ]
   },
   {
-    "ContainingType": "pnj_generator.Controllers.EquipmentController",
+    "ContainingType": "pnj_generator.Controllers.Features.EquipmentController",
     "Method": "CreateEquipment",
     "RelativePath": "api/universes/{universeId}/equipments",
     "HttpMethod": "POST",
@@ -284,13 +284,13 @@
       },
       {
         "Name": "dto",
-        "Type": "pnj_generator.DTOs.EquipmentCreateDTO",
+        "Type": "pnj_generator.DTOs.Features.EquipmentCreateDTO",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "pnj_generator.Models.Equipment",
+        "Type": "pnj_generator.Models.Features.Equipment",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -301,7 +301,7 @@
     ]
   },
   {
-    "ContainingType": "pnj_generator.Controllers.EquipmentController",
+    "ContainingType": "pnj_generator.Controllers.Features.EquipmentController",
     "Method": "GetEquipmentById",
     "RelativePath": "api/universes/{universeId}/equipments/{id}",
     "HttpMethod": "GET",
@@ -321,7 +321,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "pnj_generator.Models.Equipment",
+        "Type": "pnj_generator.Models.Features.Equipment",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -332,7 +332,7 @@
     ]
   },
   {
-    "ContainingType": "pnj_generator.Controllers.EquipmentController",
+    "ContainingType": "pnj_generator.Controllers.Features.EquipmentController",
     "Method": "UpdateEquipment",
     "RelativePath": "api/universes/{universeId}/equipments/{id}",
     "HttpMethod": "PUT",
@@ -351,14 +351,14 @@
       },
       {
         "Name": "dto",
-        "Type": "pnj_generator.DTOs.EquipmentCreateDTO",
+        "Type": "pnj_generator.DTOs.Features.EquipmentCreateDTO",
         "IsRequired": true
       }
     ],
     "ReturnTypes": []
   },
   {
-    "ContainingType": "pnj_generator.Controllers.EquipmentController",
+    "ContainingType": "pnj_generator.Controllers.Features.EquipmentController",
     "Method": "DeleteEquipment",
     "RelativePath": "api/universes/{universeId}/equipments/{id}",
     "HttpMethod": "DELETE",
@@ -379,7 +379,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "pnj_generator.Controllers.ProtectionsController",
+    "ContainingType": "pnj_generator.Controllers.Features.ProtectionsController",
     "Method": "GetAllProtections",
     "RelativePath": "api/universes/{universeId}/protections",
     "HttpMethod": "GET",
@@ -394,7 +394,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.List\u00601[[pnj_generator.Models.Protection, pnj-generator, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.List\u00601[[pnj_generator.Models.Features.Protection, pnj-generator, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -405,7 +405,7 @@
     ]
   },
   {
-    "ContainingType": "pnj_generator.Controllers.ProtectionsController",
+    "ContainingType": "pnj_generator.Controllers.Features.ProtectionsController",
     "Method": "CreateProtection",
     "RelativePath": "api/universes/{universeId}/protections",
     "HttpMethod": "POST",
@@ -419,13 +419,13 @@
       },
       {
         "Name": "dto",
-        "Type": "pnj_generator.DTOs.ProtectionCreateDTO",
+        "Type": "pnj_generator.DTOs.Features.ProtectionCreateDTO",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "pnj_generator.Models.Protection",
+        "Type": "pnj_generator.Models.Features.Protection",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -436,7 +436,7 @@
     ]
   },
   {
-    "ContainingType": "pnj_generator.Controllers.ProtectionsController",
+    "ContainingType": "pnj_generator.Controllers.Features.ProtectionsController",
     "Method": "GetProtectionById",
     "RelativePath": "api/universes/{universeId}/protections/{id}",
     "HttpMethod": "GET",
@@ -456,7 +456,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "pnj_generator.Models.Protection",
+        "Type": "pnj_generator.Models.Features.Protection",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -467,7 +467,7 @@
     ]
   },
   {
-    "ContainingType": "pnj_generator.Controllers.ProtectionsController",
+    "ContainingType": "pnj_generator.Controllers.Features.ProtectionsController",
     "Method": "UpdateProtection",
     "RelativePath": "api/universes/{universeId}/protections/{id}",
     "HttpMethod": "PUT",
@@ -486,14 +486,14 @@
       },
       {
         "Name": "dto",
-        "Type": "pnj_generator.DTOs.ProtectionCreateDTO",
+        "Type": "pnj_generator.DTOs.Features.ProtectionCreateDTO",
         "IsRequired": true
       }
     ],
     "ReturnTypes": []
   },
   {
-    "ContainingType": "pnj_generator.Controllers.ProtectionsController",
+    "ContainingType": "pnj_generator.Controllers.Features.ProtectionsController",
     "Method": "DeleteProtection",
     "RelativePath": "api/universes/{universeId}/protections/{id}",
     "HttpMethod": "DELETE",
@@ -514,7 +514,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "pnj_generator.Controllers.SkillsController",
+    "ContainingType": "pnj_generator.Controllers.Features.SkillsController",
     "Method": "GetAllSkills",
     "RelativePath": "api/universes/{universeId}/skills",
     "HttpMethod": "GET",
@@ -529,7 +529,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.List\u00601[[pnj_generator.Models.Skill, pnj-generator, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.List\u00601[[pnj_generator.Models.Features.Skill, pnj-generator, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -540,7 +540,7 @@
     ]
   },
   {
-    "ContainingType": "pnj_generator.Controllers.SkillsController",
+    "ContainingType": "pnj_generator.Controllers.Features.SkillsController",
     "Method": "CreateSkill",
     "RelativePath": "api/universes/{universeId}/skills",
     "HttpMethod": "POST",
@@ -554,13 +554,13 @@
       },
       {
         "Name": "dto",
-        "Type": "pnj_generator.DTOs.SkillCreateDTO",
+        "Type": "pnj_generator.DTOs.Features.SkillCreateDTO",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "pnj_generator.Models.Skill",
+        "Type": "pnj_generator.Models.Features.Skill",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -571,7 +571,7 @@
     ]
   },
   {
-    "ContainingType": "pnj_generator.Controllers.SkillsController",
+    "ContainingType": "pnj_generator.Controllers.Features.SkillsController",
     "Method": "GetSkillById",
     "RelativePath": "api/universes/{universeId}/skills/{id}",
     "HttpMethod": "GET",
@@ -591,7 +591,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "pnj_generator.Models.Skill",
+        "Type": "pnj_generator.Models.Features.Skill",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -602,7 +602,7 @@
     ]
   },
   {
-    "ContainingType": "pnj_generator.Controllers.SkillsController",
+    "ContainingType": "pnj_generator.Controllers.Features.SkillsController",
     "Method": "UpdateSkill",
     "RelativePath": "api/universes/{universeId}/skills/{id}",
     "HttpMethod": "PUT",
@@ -621,14 +621,14 @@
       },
       {
         "Name": "dto",
-        "Type": "pnj_generator.DTOs.SkillCreateDTO",
+        "Type": "pnj_generator.DTOs.Features.SkillCreateDTO",
         "IsRequired": true
       }
     ],
     "ReturnTypes": []
   },
   {
-    "ContainingType": "pnj_generator.Controllers.SkillsController",
+    "ContainingType": "pnj_generator.Controllers.Features.SkillsController",
     "Method": "DeleteSkill",
     "RelativePath": "api/universes/{universeId}/skills/{id}",
     "HttpMethod": "DELETE",
@@ -649,7 +649,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "pnj_generator.Controllers.TraitsController",
+    "ContainingType": "pnj_generator.Controllers.Features.TraitsController",
     "Method": "GetAllTraits",
     "RelativePath": "api/universes/{universeId}/traits",
     "HttpMethod": "GET",
@@ -664,7 +664,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.List\u00601[[pnj_generator.Models.Trait, pnj-generator, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.List\u00601[[pnj_generator.Models.Features.Trait, pnj-generator, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -675,7 +675,7 @@
     ]
   },
   {
-    "ContainingType": "pnj_generator.Controllers.TraitsController",
+    "ContainingType": "pnj_generator.Controllers.Features.TraitsController",
     "Method": "CreateTrait",
     "RelativePath": "api/universes/{universeId}/traits",
     "HttpMethod": "POST",
@@ -689,13 +689,13 @@
       },
       {
         "Name": "dto",
-        "Type": "pnj_generator.DTOs.TraitCreateDTO",
+        "Type": "pnj_generator.DTOs.Features.TraitCreateDTO",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "pnj_generator.Models.Trait",
+        "Type": "pnj_generator.Models.Features.Trait",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -706,7 +706,7 @@
     ]
   },
   {
-    "ContainingType": "pnj_generator.Controllers.TraitsController",
+    "ContainingType": "pnj_generator.Controllers.Features.TraitsController",
     "Method": "GetTraitById",
     "RelativePath": "api/universes/{universeId}/traits/{id}",
     "HttpMethod": "GET",
@@ -726,7 +726,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "pnj_generator.Models.Trait",
+        "Type": "pnj_generator.Models.Features.Trait",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -737,7 +737,7 @@
     ]
   },
   {
-    "ContainingType": "pnj_generator.Controllers.TraitsController",
+    "ContainingType": "pnj_generator.Controllers.Features.TraitsController",
     "Method": "UpdateTrait",
     "RelativePath": "api/universes/{universeId}/traits/{id}",
     "HttpMethod": "PUT",
@@ -756,14 +756,14 @@
       },
       {
         "Name": "dto",
-        "Type": "pnj_generator.DTOs.TraitCreateDTO",
+        "Type": "pnj_generator.DTOs.Features.TraitCreateDTO",
         "IsRequired": true
       }
     ],
     "ReturnTypes": []
   },
   {
-    "ContainingType": "pnj_generator.Controllers.TraitsController",
+    "ContainingType": "pnj_generator.Controllers.Features.TraitsController",
     "Method": "DeleteTrait",
     "RelativePath": "api/universes/{universeId}/traits/{id}",
     "HttpMethod": "DELETE",
@@ -784,7 +784,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "pnj_generator.Controllers.WeaponsController",
+    "ContainingType": "pnj_generator.Controllers.Features.WeaponsController",
     "Method": "GetAllWeapons",
     "RelativePath": "api/universes/{universeId}/weapons",
     "HttpMethod": "GET",
@@ -799,7 +799,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.List\u00601[[pnj_generator.Models.Weapons, pnj-generator, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.List\u00601[[pnj_generator.Models.Features.Weapons, pnj-generator, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -810,7 +810,7 @@
     ]
   },
   {
-    "ContainingType": "pnj_generator.Controllers.WeaponsController",
+    "ContainingType": "pnj_generator.Controllers.Features.WeaponsController",
     "Method": "CreateWeapon",
     "RelativePath": "api/universes/{universeId}/weapons",
     "HttpMethod": "POST",
@@ -824,13 +824,13 @@
       },
       {
         "Name": "dto",
-        "Type": "pnj_generator.DTOs.WeaponsCreateDTO",
+        "Type": "pnj_generator.DTOs.Features.WeaponsCreateDTO",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "pnj_generator.Models.Weapons",
+        "Type": "pnj_generator.Models.Features.Weapons",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -841,7 +841,7 @@
     ]
   },
   {
-    "ContainingType": "pnj_generator.Controllers.WeaponsController",
+    "ContainingType": "pnj_generator.Controllers.Features.WeaponsController",
     "Method": "GetWeaponById",
     "RelativePath": "api/universes/{universeId}/weapons/{id}",
     "HttpMethod": "GET",
@@ -861,7 +861,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "pnj_generator.Models.Weapons",
+        "Type": "pnj_generator.Models.Features.Weapons",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -872,7 +872,7 @@
     ]
   },
   {
-    "ContainingType": "pnj_generator.Controllers.WeaponsController",
+    "ContainingType": "pnj_generator.Controllers.Features.WeaponsController",
     "Method": "UpdateWeapon",
     "RelativePath": "api/universes/{universeId}/weapons/{id}",
     "HttpMethod": "PUT",
@@ -891,14 +891,14 @@
       },
       {
         "Name": "dto",
-        "Type": "pnj_generator.DTOs.WeaponsCreateDTO",
+        "Type": "pnj_generator.DTOs.Features.WeaponsCreateDTO",
         "IsRequired": true
       }
     ],
     "ReturnTypes": []
   },
   {
-    "ContainingType": "pnj_generator.Controllers.WeaponsController",
+    "ContainingType": "pnj_generator.Controllers.Features.WeaponsController",
     "Method": "DeleteWeapon",
     "RelativePath": "api/universes/{universeId}/weapons/{id}",
     "HttpMethod": "DELETE",

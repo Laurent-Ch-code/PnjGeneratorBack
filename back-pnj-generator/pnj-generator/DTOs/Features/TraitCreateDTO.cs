@@ -1,13 +1,14 @@
-﻿namespace pnj_generator.DTOs
+namespace pnj_generator.DTOs.Features
 {
-    public class EquipmentCreateDTO
+    public class TraitCreateDTO
     {
         public string Name { get; set; } = string.Empty;
         public string Type { get; set; } = string.Empty;
+        public string Effect { get; set; } = string.Empty;
         public string Description { get; set; } = string.Empty;
-        public string Bonus { get; set; } = string.Empty;
-        public string Malus { get; set; } = string.Empty;
-        // ✅ Lien obligatoire avec l’univers
+        public string? Prerequisites { get; set; }
+        
+        // ✅ Lien obligatoire avec l'univers
         public Guid UniverseId { get; set; }
     }
 }

@@ -1,4 +1,6 @@
-﻿namespace pnj_generator.Models
+﻿using pnj_generator.Models.Features;
+
+namespace pnj_generator.Models
 {
     public class Universe
     {
