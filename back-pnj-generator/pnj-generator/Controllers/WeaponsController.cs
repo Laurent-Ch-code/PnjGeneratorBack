@@ -47,8 +47,8 @@ namespace pnj_generator.Controllers
                 Range = dto.Range,
                 Description = dto.Description,
                 Capacity = dto.Capacity,
-                radius = dto.radius,
-                weaponFireMode = dto.weaponFireMode,
+                Radius = dto.radius,
+                WeaponFireMode = dto.weaponFireMode,
                 UniverseId = dto.UniverseId
             };
 
@@ -69,8 +69,8 @@ namespace pnj_generator.Controllers
             weapon.Range = dto.Range;
             weapon.Description = dto.Description;
             weapon.Capacity = dto.Capacity;
-            weapon.radius = dto.radius;
-            weapon.weaponFireMode = dto.weaponFireMode;
+            weapon.Radius = dto.radius;
+            weapon.WeaponFireMode = dto.weaponFireMode;
             weapon.UniverseId = dto.UniverseId;
 
             await _db.SaveChangesAsync();

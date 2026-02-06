@@ -34,7 +34,7 @@ namespace pnj_generator.Data
                 entity.HasKey(w => w.Id);
 
                 entity.Property(w => w.Name).IsRequired().HasMaxLength(200);
-                entity.Property(w => w.weaponFireMode).IsRequired();
+                entity.Property(w => w.WeaponFireMode).IsRequired();
 
                 // Relation obligatoire : Weapon → Universe
                 entity.HasOne(w => w.Universe)
