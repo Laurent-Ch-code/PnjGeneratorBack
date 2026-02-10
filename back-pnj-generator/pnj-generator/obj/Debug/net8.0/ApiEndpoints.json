@@ -379,6 +379,32 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "pnj_generator.Controllers.Features.Identities.IdentitiesController",
+    "Method": "GetIdentities",
+    "RelativePath": "api/universes/{universeId}/identities",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "universeId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[pnj_generator.Models.Features.Identities.Identity, pnj-generator, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
     "ContainingType": "pnj_generator.Controllers.Features.ProtectionsController",
     "Method": "GetAllProtections",
     "RelativePath": "api/universes/{universeId}/protections",

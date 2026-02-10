@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using pnj_generator.Models;
 using pnj_generator.Models.Features;
+using pnj_generator.Models.Features.Identities;
 
 namespace pnj_generator.Data
 {
@@ -16,6 +17,11 @@ namespace pnj_generator.Data
         public DbSet<Characteristic> Characteristics { get; set; }
         public DbSet<Skill> Skills { get; set; }
         public DbSet<Trait> Traits { get; set; }
+        public DbSet<Identity> Identities { get; set; }
+        public DbSet<Culture> Cultures { get; set; }
+        public DbSet<Alignment> Alignments { get; set; }
+        public DbSet<Specie> Species { get; set; }
+        public DbSet<FragmentIdentity> FragmentIdentities { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -134,6 +140,91 @@ namespace pnj_generator.Data
                       .OnDelete(DeleteBehavior.Cascade);
             });
 
+            // CULTURE
+            modelBuilder.Entity<Culture>(entity =>
+            {
+                entity.ToTable("cultures");
+                entity.HasKey(c => c.Id);
+
+                // Relation obligatoire : Trait → Universe
+                entity.HasOne(t => t.Universe)
+                      .WithMany()
+                      .HasForeignKey(t => t.UniverseId)
+                      .IsRequired()
+                      .OnDelete(DeleteBehavior.Cascade);
+            });
+            // Alignment
+            modelBuilder.Entity<Alignment>(entity =>
+            {
+                entity.ToTable("alignments");
+                entity.HasKey(c => c.Id);
+
+                // Relation obligatoire : Trait → Universe
+                entity.HasOne(t => t.Universe)
+                      .WithMany()
+                      .HasForeignKey(t => t.UniverseId)
+                      .IsRequired()
+                      .OnDelete(DeleteBehavior.Cascade);
+            });
+            // CULTURE
+            modelBuilder.Entity<Specie>(entity =>
+            {
+                entity.ToTable("species");
+                entity.HasKey(c => c.Id);
+
+                // Relation obligatoire : Trait → Universe
+                entity.HasOne(t => t.Universe)
+                      .WithMany()
+                      .HasForeignKey(t => t.UniverseId)
+                      .IsRequired()
+                      .OnDelete(DeleteBehavior.Cascade);
+            });
+
+            // FragmentIdentity (Name, FirstName, Alias)
+            modelBuilder.Entity<FragmentIdentity>(entity =>
+            {
+                entity.ToTable("fragment_identities");
+                entity.HasKey(f => f.Id);
+
+                entity.HasOne(f => f.Universe)
+                    .WithMany()
+                    .HasForeignKey(f => f.UniverseId)
+                    .IsRequired();
+            });
+
+            modelBuilder.Entity<Identity>(entity =>
+            {
+                entity.ToTable("identities");
+                entity.HasKey(i => i.Id);
+
+                // Relation avec l'Univers
+                entity.HasOne(i => i.Universe)
+                    .WithMany()
+                    .HasForeignKey(i => i.UniverseId)
+                    .IsRequired();
+
+                // Liens vers les Fragments (Pointeurs vers FragmentIdentity)
+                // On définit explicitement les colonnes de FK pour chaque type de fragment
+                entity.HasOne(i => i.Name)
+                    .WithMany()
+                    .HasForeignKey("NameFragmentId") // Nom de la colonne en BDD
+                    .IsRequired(false);
+
+                entity.HasOne(i => i.FirstName)
+                    .WithMany()
+                    .HasForeignKey("FirstNameFragmentId")
+                    .IsRequired(false);
+
+                entity.HasOne(i => i.Alias)
+                    .WithMany()
+                    .HasForeignKey("AliasFragmentId")
+                    .IsRequired(false);
+
+                // Liens vers les références optionnelles
+                entity.HasOne(i => i.Culture).WithMany().HasForeignKey(i => i.CultureId).IsRequired(false);
+                entity.HasOne(i => i.Specie).WithMany().HasForeignKey(i => i.SpecieId).IsRequired(false);
+                entity.HasOne(i => i.Alignment).WithMany().HasForeignKey(i => i.AlignmentId).IsRequired(false);
+            });
         }
     }
 }

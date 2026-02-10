@@ -473,6 +473,55 @@
         }
       }
     },
+    "/api/universes/{universeId}/identities": {
+      "get": {
+        "tags": [
+          "Identities"
+        ],
+        "parameters": [
+          {
+            "name": "universeId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Identity"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Identity"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Identity"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/universes/{universeId}/protections": {
       "get": {
         "tags": [
@@ -1597,6 +1646,27 @@
   },
   "components": {
     "schemas": {
+      "Alignment": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "universeId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "universe": {
+            "$ref": "#/components/schemas/Universe"
+          }
+        },
+        "additionalProperties": false
+      },
       "Characteristic": {
         "required": [
           "name",
@@ -1660,6 +1730,27 @@
           "universeId": {
             "type": "string",
             "format": "uuid"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Culture": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "universeId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "universe": {
+            "$ref": "#/components/schemas/Universe"
           }
         },
         "additionalProperties": false
@@ -1730,6 +1821,133 @@
           "universeId": {
             "type": "string",
             "format": "uuid"
+          }
+        },
+        "additionalProperties": false
+      },
+      "FragmentIdentity": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "universeId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "universe": {
+            "$ref": "#/components/schemas/Universe"
+          },
+          "value": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Gender": {
+        "enum": [
+          0,
+          1,
+          2
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "Identity": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "universeId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "universe": {
+            "$ref": "#/components/schemas/Universe"
+          },
+          "cultureId": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "culture": {
+            "$ref": "#/components/schemas/Culture"
+          },
+          "specieId": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "specie": {
+            "$ref": "#/components/schemas/Specie"
+          },
+          "alignmentId": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "alignment": {
+            "$ref": "#/components/schemas/Alignment"
+          },
+          "originId": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "origin": {
+            "$ref": "#/components/schemas/Origin"
+          },
+          "nameId": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "name": {
+            "$ref": "#/components/schemas/FragmentIdentity"
+          },
+          "firstNameId": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "firstName": {
+            "$ref": "#/components/schemas/FragmentIdentity"
+          },
+          "aliasId": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "alias": {
+            "$ref": "#/components/schemas/FragmentIdentity"
+          },
+          "gender": {
+            "$ref": "#/components/schemas/Gender"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Origin": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "universeId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "universe": {
+            "$ref": "#/components/schemas/Universe"
           }
         },
         "additionalProperties": false
@@ -1898,6 +2116,27 @@
           "universeId": {
             "type": "string",
             "format": "uuid"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Specie": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "universeId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "universe": {
+            "$ref": "#/components/schemas/Universe"
           }
         },
         "additionalProperties": false
