@@ -13,34 +13,34 @@ namespace pnj_generator.Models.Features.Identities
         public Universe Universe { get; set; } = null!;
 
         // Relation Culture (Optionnelle)
-        public Guid? CultureId { get; set; }
+        public Guid? CultureId { get; set; } = null;
         [ForeignKey("CultureId")]
-        public virtual Culture? Culture { get; set; }
+        public virtual Culture? Culture { get; set; } = null;
 
         // Relation Specie (Optionnelle)
-        public Guid? SpecieId { get; set; }
+        public Guid? SpecieId { get; set; } = null;
         [ForeignKey("SpecieId")]
-        public virtual Specie? Specie { get; set; }
+        public virtual Specie? Specie { get; set; } = null;
 
         // Relation Alignment (Optionnelle)
-        public Guid? AlignmentId { get; set; }
+        public Guid? AlignmentId { get; set; } = null;
         [ForeignKey("AlignmentId")]
-        public virtual Alignment? Alignment { get; set; }
+        public virtual Alignment? Alignment { get; set; } = null;
 
         // Relation Origin (Optionnelle)
-        public Guid? OriginId { get; set; }
+        public Guid? OriginId { get; set; } = null;
         [ForeignKey("OriginId")]
-        public virtual Origin? Origin { get; set; }
+        public virtual Origin? Origin { get; set; } = null;
 
         // Relation Name
-        public Guid? NameId { get; set; }
-        public FragmentIdentity? Name { get; set; }
+        public Guid? NameId { get; set; } = null;
+        public FragmentIdentity? Name { get; set; } = null;
         // Relation FirstName
-        public Guid? FirstNameId { get; set; }
-        public FragmentIdentity? FirstName { get; set; }
+        public Guid? FirstNameId { get; set; } = null;
+        public FragmentIdentity? FirstName { get; set; } = null;
         // Relation Alias
-        public Guid? AliasId { get; set; }
-        public FragmentIdentity? Alias { get; set; }
+        public Guid? AliasId { get; set; } = null;
+        public FragmentIdentity? Alias { get; set; } = null;
         public Gender Gender { get; set; }
     }
 
@@ -52,15 +52,16 @@ namespace pnj_generator.Models.Features.Identities
         [ForeignKey("UniverseId")]
         public Universe Universe { get; set; } = null!;
         public string Value { get; set; }
+        public Gender Gender { get; set; }
     }
 
     public class AdditionalInformation
     {
         [Key]
         public Guid Id { get; set; }
-        public string Name { get; set; }
+        public string Value { get; set; }
         public Guid UniverseId { get; set; } 
-        [ForeignKey("UnvierseId")]
+        [ForeignKey("UniverseId")]
         public Universe Universe { get; set; } = null!;
     }
 

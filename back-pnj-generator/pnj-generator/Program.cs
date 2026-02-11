@@ -1,5 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using pnj_generator.Data;
+using pnj_generator.Interfaces.Services;
+using pnj_generator.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -25,6 +27,8 @@ builder.Services.AddDbContext<AppDbContext>(options =>
         builder.Configuration.GetConnectionString("Postgres")
     );
 });
+
+builder.Services.AddScoped<IIdentityService, IdentityService>();
 
 // ✅ Build après avoir enregistré les services
 var app = builder.Build();

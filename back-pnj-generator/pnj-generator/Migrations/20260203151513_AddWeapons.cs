@@ -23,8 +23,8 @@ namespace pnj_generator.Migrations
                     Range = table.Column<string>(type: "text", nullable: false),
                     Description = table.Column<string>(type: "text", nullable: false),
                     Capacity = table.Column<int>(type: "integer", nullable: false),
-                    radius = table.Column<int>(type: "integer", nullable: false),
-                    weaponFireMode = table.Column<int>(type: "integer", nullable: false)
+                    Radius = table.Column<int>(type: "integer", nullable: false),
+                    WeaponFireMode = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {

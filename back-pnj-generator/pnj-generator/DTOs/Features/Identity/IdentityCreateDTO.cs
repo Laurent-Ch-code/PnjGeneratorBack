@@ -5,24 +5,25 @@ namespace pnj_generator.DTOs.Features.Identity
     public class IdentityCreateDTO
     {
         public Guid UniverseId { get; set; }
-        public FragmentIdentity? Name { get; set; }
-        public FragmentIdentity? FirstName { get; set; }
-        public FragmentIdentity? Alias { get; set; }
+        public FragmentIdentityDTO? Name { get; set; } = null;
+        public FragmentIdentityDTO? FirstName { get; set; } = null;
+        public FragmentIdentityDTO? Alias { get; set; } = null;
         public Gender Gender { get; set; }
-        public AdditionalInformation? Culture { get; set; }
-        public AdditionalInformation? Alignment { get; set; }
-        public AdditionalInformation? Specie { get; set; }
-        public AdditionalInformation? Origin { get; set; }
+        public AdditionnalInformationDTO? Culture { get; set; } = null;
+        public AdditionnalInformationDTO? Alignment { get; set; } = null;
+        public AdditionnalInformationDTO? Specie { get; set; } = null;
+        public AdditionnalInformationDTO? Origin { get; set; } = null;
 
     }
 
-    public class AdditionnalInformation
+    public class AdditionnalInformationDTO
     {
-        public string Name { get; set; }
+        public string Value { get; set; }
         public Guid UniverseId { get; set; }
+        public Gender Gender { get; set; }
     }
 
-    public class FragmentIdentity
+    public class FragmentIdentityDTO
     {
         public Guid UniverseId { get; set; }
         public string Value { get; set; }

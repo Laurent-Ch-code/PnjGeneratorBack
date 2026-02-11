@@ -10,8 +10,8 @@ namespace pnj_generator.DTOs.Features
         public string Range { get; set; } = string.Empty;
         public string Description { get; set; } = string.Empty;
         public int Capacity { get; set; } = 0;
-        public int radius { get; set; } = 0;
-        public WeaponFireMode weaponFireMode { get; set; } = WeaponFireMode.Single;
+        public int Radius { get; set; } = 0;
+        public WeaponFireMode WeaponFireMode { get; set; } = WeaponFireMode.Single;
         // ✅ Lien obligatoire avec l’univers
         public Guid UniverseId { get; set; }
     }
