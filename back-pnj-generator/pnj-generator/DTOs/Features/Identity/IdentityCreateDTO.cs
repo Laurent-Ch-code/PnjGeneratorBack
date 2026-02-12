@@ -13,6 +13,8 @@ namespace pnj_generator.DTOs.Features.Identity
         public AdditionnalInformationDTO? Alignment { get; set; } = null;
         public AdditionnalInformationDTO? Specie { get; set; } = null;
         public AdditionnalInformationDTO? Origin { get; set; } = null;
+        public int? Age { get; set; } = null;
+        public string? Description { get; set; } = null;
 
     }
 

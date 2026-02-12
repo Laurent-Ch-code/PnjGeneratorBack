@@ -2194,6 +2194,15 @@
           },
           "gender": {
             "$ref": "#/components/schemas/Gender"
+          },
+          "age": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -2228,6 +2237,15 @@
           },
           "origin": {
             "$ref": "#/components/schemas/AdditionnalInformationDTO"
+          },
+          "age": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false

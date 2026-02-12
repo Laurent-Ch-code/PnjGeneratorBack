@@ -42,6 +42,8 @@ namespace pnj_generator.Models.Features.Identities
         public Guid? AliasId { get; set; } = null;
         public FragmentIdentity? Alias { get; set; } = null;
         public Gender Gender { get; set; }
+        public int? Age { get; set; } = null;
+        public string? Description { get; set; } = null;
     }
 
     public class FragmentIdentity

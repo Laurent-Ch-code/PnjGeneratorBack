@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
 using pnj_generator.Data;
 using pnj_generator.DTOs.Features.Identity;
 using pnj_generator.Interfaces.Services;
@@ -42,7 +43,9 @@ namespace pnj_generator.Services
                 Culture = await GetOrCreateAdditionalInfo<Culture>(identityDto.Culture, universeId),
                 Specie = await GetOrCreateAdditionalInfo<Specie>(identityDto.Specie, universeId),
                 Alignment = await GetOrCreateAdditionalInfo<Alignment>(identityDto.Alignment, universeId),
-                Origin = await GetOrCreateAdditionalInfo<Origin>(identityDto.Origin, universeId)
+                Origin = await GetOrCreateAdditionalInfo<Origin>(identityDto.Origin, universeId),
+                Age = identityDto.Age,                  // ← à ajouter
+                Description = identityDto.Description
             };
 
             // 3. Enregistrement unique
@@ -82,6 +85,8 @@ namespace pnj_generator.Services
             existingIdentity.Specie = await GetOrCreateAdditionalInfo<Specie>(identityDto.Specie, universeId);
             existingIdentity.Alignment = await GetOrCreateAdditionalInfo<Alignment>(identityDto.Alignment, universeId);
             existingIdentity.Origin = await GetOrCreateAdditionalInfo<Origin>(identityDto.Origin, universeId);
+            existingIdentity.Age = identityDto.Age;
+            existingIdentity.Description = identityDto.Description;
 
             // 4. Sauvegarde
             await _db.SaveChangesAsync();

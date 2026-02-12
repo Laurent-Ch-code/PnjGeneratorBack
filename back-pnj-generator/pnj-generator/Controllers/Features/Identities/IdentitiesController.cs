@@ -41,7 +41,7 @@ namespace pnj_generator.Controllers.Features.Identities
         public async Task<ActionResult<Identity>> GetIdentityById(Guid universeId, Guid id)
         {
             var identity = await _db.Identities
-                .Where(i => i.UniverseId == universeId)
+                .Where(i => i.UniverseId == universeId && i.Id == id)
                 .Include(i => i.FirstName)
                 .Include(i => i.Name)
                 .Include(i => i.Alias)
@@ -49,7 +49,7 @@ namespace pnj_generator.Controllers.Features.Identities
                 .Include(i => i.Specie)
                 .Include(i => i.Alignment)
                 .Include(i => i.Origin)
-                .ToListAsync();
+                .FirstOrDefaultAsync();
             return Ok(identity);
         }
 
