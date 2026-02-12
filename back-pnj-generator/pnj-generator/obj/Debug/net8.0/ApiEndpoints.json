@@ -545,6 +545,182 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "pnj_generator.Controllers.Rules.ModifierRulesController",
+    "Method": "GetByUniverse",
+    "RelativePath": "api/universes/{universeId}/modifier-rules",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "universeId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[pnj_generator.Models.Rules.ModifierRules, pnj-generator, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "pnj_generator.Controllers.Rules.ModifierRulesController",
+    "Method": "CreateModifierRule",
+    "RelativePath": "api/universes/{universeId}/modifier-rules",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "universeId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "dto",
+        "Type": "pnj_generator.DTOs.Rules.ModifierRulesCreateDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "pnj_generator.Models.Rules.ModifierRules",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "pnj_generator.Controllers.Rules.ModifierRulesController",
+    "Method": "GetById",
+    "RelativePath": "api/universes/{universeId}/modifier-rules/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "universeId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "pnj_generator.Models.Rules.ModifierRules",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "pnj_generator.Controllers.Rules.ModifierRulesController",
+    "Method": "UpdateModifierRule",
+    "RelativePath": "api/universes/{universeId}/modifier-rules/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "universeId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "dto",
+        "Type": "pnj_generator.DTOs.Rules.ModifierRulesCreateDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "pnj_generator.Models.Rules.ModifierRules",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "pnj_generator.Controllers.Rules.ModifierRulesController",
+    "Method": "DeleteModifierRule",
+    "RelativePath": "api/universes/{universeId}/modifier-rules/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "universeId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "pnj_generator.Controllers.Rules.ModifierRulesController",
+    "Method": "GetByCharacteristic",
+    "RelativePath": "api/universes/{universeId}/modifier-rules/characteristic/{characteristicId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "universeId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "characteristicId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[pnj_generator.Models.Rules.ModifierRules, pnj-generator, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
     "ContainingType": "pnj_generator.Controllers.Features.ProtectionsController",
     "Method": "GetAllProtections",
     "RelativePath": "api/universes/{universeId}/protections",

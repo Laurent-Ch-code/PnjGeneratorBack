@@ -2,6 +2,7 @@
 using pnj_generator.Models;
 using pnj_generator.Models.Features;
 using pnj_generator.Models.Features.Identities;
+using pnj_generator.Models.Rules;
 
 namespace pnj_generator.Data
 {
@@ -26,6 +27,7 @@ namespace pnj_generator.Data
         public DbSet<Specie> Species { get; set; }
         public DbSet<Alignment> Alignments { get; set; }
         public DbSet<Origin> Origins { get; set; }
+        public DbSet<ModifierRules> ModifierRules { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -40,6 +42,22 @@ namespace pnj_generator.Data
                 entity.Property(u => u.Era).HasMaxLength(100);
                 entity.Property(u => u.DiceRule).HasMaxLength(50);
             });
+
+            // -------------------------
+            // MODIFIER RULES
+            // -------------------------
+            modelBuilder.Entity<ModifierRules>(entity => {
+                entity.ToTable("modifier_rules");
+                entity.HasOne(r => r.Universe)
+                      .WithMany()
+                      .HasForeignKey(r => r.UniverseId)
+                      .OnDelete(DeleteBehavior.Cascade);
+                entity.HasOne(r => r.Characteristic)
+                      .WithMany()
+                      .HasForeignKey(r => r.CharacteristicId)
+                      .OnDelete(DeleteBehavior.SetNull);
+            });
+
 
             // -------------------------
             // WEAPONS
