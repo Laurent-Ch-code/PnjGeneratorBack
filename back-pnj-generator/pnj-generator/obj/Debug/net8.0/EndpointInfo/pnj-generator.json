@@ -2440,11 +2440,12 @@
       },
       "Gender": {
         "enum": [
-          "Male",
-          "Female",
-          "Neutral"
+          0,
+          1,
+          2
         ],
-        "type": "string"
+        "type": "integer",
+        "format": "int32"
       },
       "Identity": {
         "type": "object",
@@ -2666,10 +2667,11 @@
       },
       "ModifierType": {
         "enum": [
-          "RangeTable",
-          "AvailableList"
+          0,
+          1
         ],
-        "type": "string"
+        "type": "integer",
+        "format": "int32"
       },
       "Origin": {
         "type": "object",
@@ -3019,12 +3021,13 @@
       },
       "WeaponFireMode": {
         "enum": [
-          "Single",
-          "Burst",
-          "Automatic",
-          "None"
+          0,
+          1,
+          2,
+          -1
         ],
-        "type": "string"
+        "type": "integer",
+        "format": "int32"
       },
       "Weapons": {
         "required": [

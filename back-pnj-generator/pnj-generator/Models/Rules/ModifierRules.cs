@@ -1,6 +1,7 @@
 ﻿using pnj_generator.Models.Features;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace pnj_generator.Models.Rules
 {
@@ -21,6 +22,7 @@ namespace pnj_generator.Models.Rules
         public Characteristic? Characteristic { get; set; } = null;
 
         [Required]
+        [JsonConverter(typeof(JsonStringEnumConverter))]
         public ModifierType Type { get; set; }
 
         // Utilisé si Type = RangeTable
