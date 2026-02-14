@@ -11,38 +11,40 @@ namespace pnj_generator.Models.Features
         [Key]
         public Guid Id { get; set; }
 
+        [Required]
+        public Guid UniverseId { get; set; }
         [ForeignKey("UniverseId")]
         public Universe Universe { get; set; } = null!;
 
         [Required]
-        public Guid UniverseId { get; set; }
-
-        /// <summary>
-        /// Nom de la caractéristique (ex: "Force", "Dextérité", "Intelligence")
-        /// </summary>
-        [Required]
         [MaxLength(100)]
         public string Name { get; set; } = string.Empty;
 
+        public string Description { get; set; } = string.Empty;
+
         /// <summary>
-        /// Valeur de la caractéristique
-        /// Format libre selon le système (ex: "3D6", "8", "+2", "15")
+        /// Type de dé utilisé pour cette caractéristique (ex: "D6", "D20", "D100")
         /// </summary>
         [Required]
-        [MaxLength(50)]
-        public string Value { get; set; } = string.Empty;
+        [MaxLength(10)]
+        public string DiceType { get; set; } = string.Empty;
 
         /// <summary>
-        /// Modificateur calculé (optionnel)
-        /// Ex: D&D → Force 8 = Modificateur -1
-        /// Ex: ZCorps → 3D6+2 devient 4D6
+        /// Nombre minimum de dés à lancer (ex: 2 pour 2D6)
         /// </summary>
-        [MaxLength(50)]
-        public string? Modifier { get; set; }
+        [Required]
+        public int MinDice { get; set; } = 1;
 
         /// <summary>
-        /// Description de la caractéristique
+        /// Nombre maximum de dés à lancer
+        /// Si null → jet fixe, égal à MinDice
         /// </summary>
-        public string Description { get; set; } = string.Empty;
+        public int? MaxDice { get; set; } = null;
+
+        /// <summary>
+        /// Indique si cette caractéristique a ses propres règles de modificateurs
+        /// Si false → les règles globales de l'univers s'appliquent (si elles existent)
+        /// </summary>
+        public bool HasModifiers { get; set; } = false;
     }
 }

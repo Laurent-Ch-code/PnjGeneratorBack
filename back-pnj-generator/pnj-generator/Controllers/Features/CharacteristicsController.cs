@@ -17,10 +17,6 @@ namespace pnj_generator.Controllers.Features
             _db = db;
         }
 
-        /// <summary>
-        /// Récupère toutes les caractéristiques d'un univers
-        /// GET /api/universes/{universeId}/characteristics
-        /// </summary>
         [HttpGet]
         public async Task<ActionResult<List<Characteristic>>> GetAllCharacteristics(Guid universeId)
         {
@@ -31,10 +27,6 @@ namespace pnj_generator.Controllers.Features
             return Ok(characteristics);
         }
 
-        /// <summary>
-        /// Récupère une caractéristique spécifique
-        /// GET /api/universes/{universeId}/characteristics/{id}
-        /// </summary>
         [HttpGet("{id:guid}")]
         public async Task<ActionResult<Characteristic>> GetCharacteristicById(Guid universeId, Guid id)
         {
@@ -47,10 +39,6 @@ namespace pnj_generator.Controllers.Features
             return Ok(characteristic);
         }
 
-        /// <summary>
-        /// Crée une nouvelle caractéristique
-        /// POST /api/universes/{universeId}/characteristics
-        /// </summary>
         [HttpPost]
         public async Task<ActionResult<Characteristic>> CreateCharacteristic(Guid universeId, CharacteristicCreateDTO dto)
         {
@@ -61,11 +49,13 @@ namespace pnj_generator.Controllers.Features
             var characteristic = new Characteristic
             {
                 Id = Guid.NewGuid(),
+                UniverseId = universeId,
                 Name = dto.Name,
-                Value = dto.Value,
-                Modifier = dto.Modifier,
                 Description = dto.Description,
-                UniverseId = universeId
+                DiceType = dto.DiceType,
+                MinDice = dto.MinDice,
+                MaxDice = dto.MaxDice,
+                HasModifiers = dto.HasModifiers
             };
 
             _db.Characteristics.Add(characteristic);
@@ -73,15 +63,11 @@ namespace pnj_generator.Controllers.Features
 
             return CreatedAtAction(
                 nameof(GetCharacteristicById),
-                new { universeId = universeId, id = characteristic.Id },
+                new { universeId, id = characteristic.Id },
                 characteristic
             );
         }
 
-        /// <summary>
-        /// Met à jour une caractéristique
-        /// PUT /api/universes/{universeId}/characteristics/{id}
-        /// </summary>
         [HttpPut("{id:guid}")]
         public async Task<IActionResult> UpdateCharacteristic(Guid universeId, Guid id, CharacteristicCreateDTO dto)
         {
@@ -92,18 +78,16 @@ namespace pnj_generator.Controllers.Features
                 return NotFound(new { message = "Caractéristique introuvable dans cet univers" });
 
             characteristic.Name = dto.Name;
-            characteristic.Value = dto.Value;
-            characteristic.Modifier = dto.Modifier;
             characteristic.Description = dto.Description;
+            characteristic.DiceType = dto.DiceType;
+            characteristic.MinDice = dto.MinDice;
+            characteristic.MaxDice = dto.MaxDice;
+            characteristic.HasModifiers = dto.HasModifiers;
 
             await _db.SaveChangesAsync();
             return Ok(characteristic);
         }
 
-        /// <summary>
-        /// Supprime une caractéristique
-        /// DELETE /api/universes/{universeId}/characteristics/{id}
-        /// </summary>
         [HttpDelete("{id:guid}")]
         public async Task<IActionResult> DeleteCharacteristic(Guid universeId, Guid id)
         {

@@ -2228,9 +2228,10 @@
       },
       "Characteristic": {
         "required": [
+          "diceType",
+          "minDice",
           "name",
-          "universeId",
-          "value"
+          "universeId"
         ],
         "type": "object",
         "properties": {
@@ -2238,31 +2239,38 @@
             "type": "string",
             "format": "uuid"
           },
-          "universe": {
-            "$ref": "#/components/schemas/Universe"
-          },
           "universeId": {
             "type": "string",
             "format": "uuid"
+          },
+          "universe": {
+            "$ref": "#/components/schemas/Universe"
           },
           "name": {
             "maxLength": 100,
             "minLength": 1,
             "type": "string"
           },
-          "value": {
-            "maxLength": 50,
-            "minLength": 1,
-            "type": "string"
-          },
-          "modifier": {
-            "maxLength": 50,
-            "type": "string",
-            "nullable": true
-          },
           "description": {
             "type": "string",
             "nullable": true
+          },
+          "diceType": {
+            "maxLength": 10,
+            "minLength": 1,
+            "type": "string"
+          },
+          "minDice": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "maxDice": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "hasModifiers": {
+            "type": "boolean"
           }
         },
         "additionalProperties": false
@@ -2274,17 +2282,25 @@
             "type": "string",
             "nullable": true
           },
-          "value": {
-            "type": "string",
-            "nullable": true
-          },
-          "modifier": {
-            "type": "string",
-            "nullable": true
-          },
           "description": {
             "type": "string",
             "nullable": true
+          },
+          "diceType": {
+            "type": "string",
+            "nullable": true
+          },
+          "minDice": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "maxDice": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "hasModifiers": {
+            "type": "boolean"
           },
           "universeId": {
             "type": "string",
