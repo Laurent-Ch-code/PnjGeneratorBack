@@ -2424,12 +2424,11 @@
       },
       "Gender": {
         "enum": [
-          0,
-          1,
-          2
+          "Male",
+          "Female",
+          "Neutral"
         ],
-        "type": "integer",
-        "format": "int32"
+        "type": "string"
       },
       "Identity": {
         "type": "object",
@@ -2651,11 +2650,10 @@
       },
       "ModifierType": {
         "enum": [
-          0,
-          1
+          "RangeTable",
+          "AvailableList"
         ],
-        "type": "integer",
-        "format": "int32"
+        "type": "string"
       },
       "Origin": {
         "type": "object",
@@ -2966,19 +2964,11 @@
             "type": "string",
             "nullable": true
           },
-          "weapons": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Weapons"
-            },
-            "nullable": true
+          "hasModifiers": {
+            "type": "boolean"
           },
-          "equipments": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Equipment"
-            },
-            "nullable": true
+          "modifierType": {
+            "$ref": "#/components/schemas/ModifierType"
           }
         },
         "additionalProperties": false
@@ -3001,19 +2991,24 @@
           "diceRule": {
             "type": "string",
             "nullable": true
+          },
+          "hasModifiers": {
+            "type": "boolean"
+          },
+          "modifierType": {
+            "$ref": "#/components/schemas/ModifierType"
           }
         },
         "additionalProperties": false
       },
       "WeaponFireMode": {
         "enum": [
-          0,
-          1,
-          2,
-          -1
+          "Single",
+          "Burst",
+          "Automatic",
+          "None"
         ],
-        "type": "integer",
-        "format": "int32"
+        "type": "string"
       },
       "Weapons": {
         "required": [

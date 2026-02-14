@@ -47,7 +47,7 @@ namespace pnj_generator.Data
             // MODIFIER RULES
             // -------------------------
             modelBuilder.Entity<ModifierRules>(entity => {
-                entity.ToTable("modifier_rules");
+                entity.ToTable("modifierRules");
                 entity.HasOne(r => r.Universe)
                       .WithMany()
                       .HasForeignKey(r => r.UniverseId)
@@ -72,7 +72,7 @@ namespace pnj_generator.Data
 
                 // Relation obligatoire : Weapon → Universe
                 entity.HasOne(w => w.Universe)
-                      .WithMany(u => u.Weapons) // Universe doit avoir ICollection<Weapon> Weapons
+                      .WithMany()
                       .HasForeignKey(w => w.UniverseId)
                       .IsRequired()
                       .OnDelete(DeleteBehavior.Cascade); // si l'univers est supprimé, les armes aussi
@@ -88,7 +88,7 @@ namespace pnj_generator.Data
                 entity.Property(e => e.Name).IsRequired().HasMaxLength(200);
 
                 entity.HasOne(e => e.Universe)
-                      .WithMany(u => u.Equipments)
+                      .WithMany()
                       .HasForeignKey(e => e.UniverseId)
                       .IsRequired()
                       .OnDelete(DeleteBehavior.Cascade);
@@ -179,7 +179,7 @@ namespace pnj_generator.Data
             // -------------------------
             modelBuilder.Entity<FragmentIdentity>(entity =>
             {
-                entity.ToTable("fragment_identities");
+                entity.ToTable("fragmentIdentities");
                 entity.HasKey(f => f.Id);
                 entity.Property(f => f.Value).IsRequired().HasMaxLength(200);
                 entity.Property(f => f.Gender).IsRequired();
@@ -200,6 +200,7 @@ namespace pnj_generator.Data
             {
                 // Pas de ToTable ici — c'est TPT (Table Per Type), chaque enfant a sa table
                 entity.HasKey(a => a.Id);
+                entity.ToTable("additionalInformations");
                 entity.Property(a => a.Value).IsRequired().HasMaxLength(200);
 
                 entity.HasOne(a => a.Universe)

@@ -12,8 +12,8 @@ using pnj_generator.Data;
 namespace pnj_generator.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20260212161528_AddModifierRules")]
-    partial class AddModifierRules
+    [Migration("20260214095913_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -114,7 +114,7 @@ namespace pnj_generator.Migrations
 
                     b.HasIndex("UniverseId");
 
-                    b.ToTable("AdditionalInformation");
+                    b.ToTable("additionalInformations", (string)null);
 
                     b.UseTptMappingStrategy();
                 });
@@ -140,7 +140,7 @@ namespace pnj_generator.Migrations
 
                     b.HasIndex("UniverseId");
 
-                    b.ToTable("fragment_identities", (string)null);
+                    b.ToTable("fragmentIdentities", (string)null);
                 });
 
             modelBuilder.Entity("pnj_generator.Models.Features.Identities.Identity", b =>
@@ -407,7 +407,7 @@ namespace pnj_generator.Migrations
 
                     b.HasIndex("UniverseId");
 
-                    b.ToTable("ModifierRules");
+                    b.ToTable("modifierRules", (string)null);
                 });
 
             modelBuilder.Entity("pnj_generator.Models.Universe", b =>
@@ -429,6 +429,12 @@ namespace pnj_generator.Migrations
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("character varying(100)");
+
+                    b.Property<bool>("HasModifiers")
+                        .HasColumnType("boolean");
+
+                    b.Property<int?>("ModifierType")
+                        .HasColumnType("integer");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -482,7 +488,7 @@ namespace pnj_generator.Migrations
             modelBuilder.Entity("pnj_generator.Models.Features.Equipment", b =>
                 {
                     b.HasOne("pnj_generator.Models.Universe", "Universe")
-                        .WithMany("Equipments")
+                        .WithMany()
                         .HasForeignKey("UniverseId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -608,7 +614,7 @@ namespace pnj_generator.Migrations
             modelBuilder.Entity("pnj_generator.Models.Features.Weapons", b =>
                 {
                     b.HasOne("pnj_generator.Models.Universe", "Universe")
-                        .WithMany("Weapons")
+                        .WithMany()
                         .HasForeignKey("UniverseId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -620,7 +626,8 @@ namespace pnj_generator.Migrations
                 {
                     b.HasOne("pnj_generator.Models.Features.Characteristic", "Characteristic")
                         .WithMany()
-                        .HasForeignKey("CharacteristicId");
+                        .HasForeignKey("CharacteristicId")
+                        .OnDelete(DeleteBehavior.SetNull);
 
                     b.HasOne("pnj_generator.Models.Universe", "Universe")
                         .WithMany()
@@ -667,13 +674,6 @@ namespace pnj_generator.Migrations
                         .HasForeignKey("pnj_generator.Models.Features.Identities.Specie", "Id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("pnj_generator.Models.Universe", b =>
-                {
-                    b.Navigation("Equipments");
-
-                    b.Navigation("Weapons");
                 });
 #pragma warning restore 612, 618
         }

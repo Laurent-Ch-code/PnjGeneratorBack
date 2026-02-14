@@ -45,7 +45,9 @@ public class UniversesController : ControllerBase
             Name = dto.Name,
             Era = dto.Era,
             Description = dto.Description,
-            DiceRule = dto.DiceRule
+            DiceRule = dto.DiceRule,
+            HasModifiers = dto.HasModifiers,
+            ModifierType = dto.ModifierType
         };
 
         _db.Universes.Add(universe);
@@ -64,6 +66,8 @@ public class UniversesController : ControllerBase
         universe.Era = dto.Era;
         universe.Description = dto.Description;
         universe.DiceRule = dto.DiceRule;
+        universe.HasModifiers = dto.HasModifiers;
+        universe.ModifierType = dto.ModifierType;
 
         await _db.SaveChangesAsync();
         return NoContent();

@@ -1,4 +1,5 @@
 ﻿using pnj_generator.Models.Features;
+using pnj_generator.Models.Rules;
 
 namespace pnj_generator.Models
 {
@@ -9,8 +10,7 @@ namespace pnj_generator.Models
         public string Description { get; set; } = string.Empty;
         public string Era { get; set; } = string.Empty;
         public string DiceRule { get; set; } = string.Empty;
-
-        public ICollection<Weapons> Weapons { get; set; } = new List<Weapons>();
-        public ICollection<Equipment> Equipments { get; set; } = new List<Equipment>();
+        public bool HasModifiers { get; set; } = false;
+        public ModifierType? ModifierType { get; set; } = null;
     }
 }
