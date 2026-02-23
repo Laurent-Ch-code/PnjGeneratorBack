@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using pnj_generator.Data;
+using pnj_generator.Interfaces.Services;
 using pnj_generator.Models;
 using pnj_generator.Models.Features;
 using pnj_generator.Models.Features.Identities;
@@ -8,11 +9,6 @@ using System.Text.Json;
 
 namespace pnj_generator.Services
 {
-    public interface INPCGeneratorService
-    {
-        Task<NPC> GenerateNPCAsync(Guid universeId);
-    }
-
     public class NPCGeneratorService : INPCGeneratorService
     {
         private readonly AppDbContext _db;
@@ -66,13 +62,17 @@ namespace pnj_generator.Services
             // Tire un sexe aléatoire
             var gender = (Gender)_random.Next(0, 3);
 
-            // Récupère des fragments selon le sexe
+            // Récupère des fragments selon le sexe ET le type
             var firstNames = await _db.FragmentIdentities
-                .Where(f => f.UniverseId == universeId && f.Gender == gender)
+                .Where(f => f.UniverseId == universeId && f.Gender == gender && f.Type == FragmentType.FirstName)
                 .ToListAsync();
 
             var lastNames = await _db.FragmentIdentities
-                .Where(f => f.UniverseId == universeId)
+                .Where(f => f.UniverseId == universeId && f.Type == FragmentType.LastName)
+                .ToListAsync();
+
+            var aliases = await _db.FragmentIdentities
+                .Where(f => f.UniverseId == universeId && f.Type == FragmentType.Alias)
                 .ToListAsync();
 
             var cultures = await _db.Set<Culture>()
@@ -94,7 +94,7 @@ namespace pnj_generator.Services
             // Sélection aléatoire
             var firstName = firstNames.Any() ? firstNames[_random.Next(firstNames.Count)].Value : "Unknown";
             var lastName = lastNames.Any() ? lastNames[_random.Next(lastNames.Count)].Value : "Stranger";
-            var alias = _random.Next(0, 2) == 0 && lastNames.Any() ? lastNames[_random.Next(lastNames.Count)].Value : null;
+            var alias = _random.Next(0, 2) == 0 && aliases.Any() ? aliases[_random.Next(aliases.Count)].Value : null;
             var age = _random.Next(18, 60); // Adulte par défaut V1
 
             var identity = new
@@ -131,16 +131,16 @@ namespace pnj_generator.Services
                     ? _random.Next(charact.MinDice, charact.MaxDice.Value + 1)
                     : charact.MinDice;
 
-                int value = RollDice(nbDice, GetDiceSize(charact.DiceType));
+                //int value = RollDice(nbDice, GetDiceSize(charact.DiceType));
 
                 // Calcul du modificateur selon les règles
-                int? modifier = await CalculateModifierAsync(universeId, charact.Id, value);
+                int? modifier = await CalculateModifierAsync(universeId, charact.Id, nbDice);
 
                 results.Add(new
                 {
                     name = charact.Name,
                     diceType = charact.DiceType,
-                    value,
+                    value = nbDice,
                     modifier
                 });
             }
@@ -221,10 +221,10 @@ namespace pnj_generator.Services
                     id = selected.Id,
                     name = selected.Name,
                     type = selected.Type,
-                    description = selected.Description,
                     armorRating = selected.ArmorRating,
                     material = selected.Material,
-                    weight = selected.Weight
+                    weight = selected.Weight,
+                    description = selected.Description
                 }
             };
 
@@ -252,7 +252,7 @@ namespace pnj_generator.Services
                 id = e.Id,
                 name = e.Name,
                 type = e.Type,
-                bonus = e.Bonus,
+                bonusMalus = e.Bonus,
                 malus = e.Malus
             });
 

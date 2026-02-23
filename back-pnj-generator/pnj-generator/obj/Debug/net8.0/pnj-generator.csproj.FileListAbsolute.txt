@@ -324,3 +324,4 @@ E:\Dev\dev\PnjGeneratorBack\back-pnj-generator\pnj-generator\obj\Debug\net8.0\re
 E:\Dev\dev\PnjGeneratorBack\back-pnj-generator\pnj-generator\obj\Debug\net8.0\pnj-generator.pdb
 E:\Dev\dev\PnjGeneratorBack\back-pnj-generator\pnj-generator\obj\Debug\net8.0\pnj-generator.genruntimeconfig.cache
 E:\Dev\dev\PnjGeneratorBack\back-pnj-generator\pnj-generator\obj\Debug\net8.0\ref\pnj-generator.dll
+E:\Dev\dev\PnjGeneratorBack\back-pnj-generator\pnj-generator\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt

@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using pnj_generator.Data;
 using pnj_generator.DTOs;
+using pnj_generator.Interfaces.Services;
 using pnj_generator.Models;
 using pnj_generator.Services;
 

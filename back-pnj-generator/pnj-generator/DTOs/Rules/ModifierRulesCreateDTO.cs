@@ -1,4 +1,5 @@
 ﻿using pnj_generator.Models.Rules;
+using System.Text.Json.Serialization;
 
 namespace pnj_generator.DTOs.Rules
 {
@@ -8,7 +9,7 @@ namespace pnj_generator.DTOs.Rules
 
         // Null = règle globale, renseigné = règle spécifique à une caractéristique
         public Guid? CharacteristicId { get; set; } = null;
-
+        [JsonConverter(typeof(JsonStringEnumConverter))]
         public ModifierType Type { get; set; }
 
         // RangeTable

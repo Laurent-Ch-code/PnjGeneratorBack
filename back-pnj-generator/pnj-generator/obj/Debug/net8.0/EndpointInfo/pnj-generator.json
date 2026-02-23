@@ -1064,6 +1064,240 @@
         }
       }
     },
+    "/api/universes/{universeId}/npcs": {
+      "get": {
+        "tags": [
+          "NPCs"
+        ],
+        "parameters": [
+          {
+            "name": "universeId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/NPC"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/NPC"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/NPC"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/universes/{universeId}/npcs/{id}": {
+      "get": {
+        "tags": [
+          "NPCs"
+        ],
+        "parameters": [
+          {
+            "name": "universeId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/NPC"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NPC"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NPC"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "NPCs"
+        ],
+        "parameters": [
+          {
+            "name": "universeId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NPCCreateDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NPCCreateDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/NPCCreateDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/NPC"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NPC"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NPC"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "NPCs"
+        ],
+        "parameters": [
+          {
+            "name": "universeId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/universes/{universeId}/npcs/generate": {
+      "post": {
+        "tags": [
+          "NPCs"
+        ],
+        "parameters": [
+          {
+            "name": "universeId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/NPC"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NPC"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NPC"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/universes/{universeId}/protections": {
       "get": {
         "tags": [
@@ -2401,6 +2635,9 @@
         "additionalProperties": false
       },
       "FragmentIdentity": {
+        "required": [
+          "type"
+        ],
         "type": "object",
         "properties": {
           "id": {
@@ -2413,6 +2650,9 @@
           },
           "universe": {
             "$ref": "#/components/schemas/Universe"
+          },
+          "type": {
+            "$ref": "#/components/schemas/FragmentType"
           },
           "value": {
             "type": "string",
@@ -2437,6 +2677,15 @@
           }
         },
         "additionalProperties": false
+      },
+      "FragmentType": {
+        "enum": [
+          0,
+          1,
+          2
+        ],
+        "type": "integer",
+        "format": "int32"
       },
       "Gender": {
         "enum": [
@@ -2672,6 +2921,124 @@
         ],
         "type": "integer",
         "format": "int32"
+      },
+      "NPC": {
+        "required": [
+          "characteristicsSnapshot",
+          "identitySnapshot",
+          "universeId"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "universeId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "universe": {
+            "$ref": "#/components/schemas/Universe"
+          },
+          "identitySnapshot": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "characteristicsSnapshot": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "skillsSnapshot": {
+            "type": "string",
+            "nullable": true
+          },
+          "weaponsSnapshot": {
+            "type": "string",
+            "nullable": true
+          },
+          "protectionsSnapshot": {
+            "type": "string",
+            "nullable": true
+          },
+          "equipmentSnapshot": {
+            "type": "string",
+            "nullable": true
+          },
+          "traitsSnapshot": {
+            "type": "string",
+            "nullable": true
+          },
+          "hp": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "physicalDescription": {
+            "type": "string",
+            "nullable": true
+          },
+          "gmNotes": {
+            "type": "string",
+            "nullable": true
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      },
+      "NPCCreateDTO": {
+        "type": "object",
+        "properties": {
+          "universeId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "identitySnapshot": {
+            "type": "string",
+            "nullable": true
+          },
+          "characteristicsSnapshot": {
+            "type": "string",
+            "nullable": true
+          },
+          "skillsSnapshot": {
+            "type": "string",
+            "nullable": true
+          },
+          "weaponsSnapshot": {
+            "type": "string",
+            "nullable": true
+          },
+          "protectionsSnapshot": {
+            "type": "string",
+            "nullable": true
+          },
+          "equipmentSnapshot": {
+            "type": "string",
+            "nullable": true
+          },
+          "traitsSnapshot": {
+            "type": "string",
+            "nullable": true
+          },
+          "hp": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "physicalDescription": {
+            "type": "string",
+            "nullable": true
+          },
+          "gmNotes": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
       },
       "Origin": {
         "type": "object",

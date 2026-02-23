@@ -53,8 +53,16 @@ namespace pnj_generator.Models.Features.Identities
         public Guid UniverseId { get; set; }
         [ForeignKey("UniverseId")]
         public Universe Universe { get; set; } = null!;
+        [Required]
+        public FragmentType Type { get; set; }
         public string Value { get; set; }
         public Gender Gender { get; set; }
+    }
+    public enum FragmentType
+    {
+        FirstName = 0,
+        LastName = 1,
+        Alias = 2
     }
 
     public class AdditionalInformation
