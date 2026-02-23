@@ -31,6 +31,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 });
 
 builder.Services.AddScoped<IIdentityService, IdentityService>();
+builder.Services.AddScoped<INPCGeneratorService, NPCGeneratorService>();
 
 // ✅ Build après avoir enregistré les services
 var app = builder.Build();

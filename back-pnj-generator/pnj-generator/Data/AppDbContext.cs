@@ -28,6 +28,7 @@ namespace pnj_generator.Data
         public DbSet<Alignment> Alignments { get; set; }
         public DbSet<Origin> Origins { get; set; }
         public DbSet<ModifierRules> ModifierRules { get; set; }
+        public DbSet<NPC> NPCs { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -278,6 +279,19 @@ namespace pnj_generator.Data
                       .HasForeignKey(i => i.OriginId)
                       .IsRequired(false)
                       .OnDelete(DeleteBehavior.Restrict);
+            });
+            
+            // -------------------------
+            // NPC
+            // Un NPC = une identité + des traits + des skills + caracteristics + équipements + armes + armures
+            // -------------------------
+            modelBuilder.Entity<NPC>(entity =>
+            {
+                entity.ToTable("npcs");
+                entity.HasOne(n => n.Universe)
+                      .WithMany()
+                      .HasForeignKey(n => n.UniverseId)
+                      .OnDelete(DeleteBehavior.Cascade);
             });
         }
     }

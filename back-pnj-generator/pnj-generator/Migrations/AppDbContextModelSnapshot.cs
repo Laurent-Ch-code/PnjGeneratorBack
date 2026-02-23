@@ -376,6 +376,62 @@ namespace pnj_generator.Migrations
                     b.ToTable("weapons", (string)null);
                 });
 
+            modelBuilder.Entity("pnj_generator.Models.NPC", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("CharacteristicsSnapshot")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("EquipmentSnapshot")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("GMNotes")
+                        .HasColumnType("text");
+
+                    b.Property<int?>("HP")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("IdentitySnapshot")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("PhysicalDescription")
+                        .HasColumnType("text");
+
+                    b.Property<string>("ProtectionsSnapshot")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("SkillsSnapshot")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("TraitsSnapshot")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<Guid>("UniverseId")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("WeaponsSnapshot")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UniverseId");
+
+                    b.ToTable("npcs", (string)null);
+                });
+
             modelBuilder.Entity("pnj_generator.Models.Rules.ModifierRules", b =>
                 {
                     b.Property<Guid>("Id")
@@ -614,6 +670,17 @@ namespace pnj_generator.Migrations
                 });
 
             modelBuilder.Entity("pnj_generator.Models.Features.Weapons", b =>
+                {
+                    b.HasOne("pnj_generator.Models.Universe", "Universe")
+                        .WithMany()
+                        .HasForeignKey("UniverseId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Universe");
+                });
+
+            modelBuilder.Entity("pnj_generator.Models.NPC", b =>
                 {
                     b.HasOne("pnj_generator.Models.Universe", "Universe")
                         .WithMany()
