@@ -1,5 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using pnj_generator.Data;
+using pnj_generator.Interfaces.Services;
+using pnj_generator.Services;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,18 +16,26 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AngularDev", policy =>
     {
         policy
-            .WithOrigins("http://localhost:4200")
+            .WithOrigins(
+                "http://localhost:4200",
+                "https://pnj-generator.web.app",
+                "https://pnj-generator.firebaseapp.com"
+            )
             .AllowAnyHeader()
             .AllowAnyMethod();
     });
 });
 
+
 builder.Services.AddDbContext<AppDbContext>(options =>
 {
     options.UseNpgsql(
-        builder.Configuration.GetConnectionString("Postgres")
+        builder.Configuration.GetConnectionString("DefaultConnection")
     );
 });
+
+builder.Services.AddScoped<IIdentityService, IdentityService>();
+builder.Services.AddScoped<INPCGeneratorService, NPCGeneratorService>();
 
 // ✅ Build après avoir enregistré les services
 var app = builder.Build();

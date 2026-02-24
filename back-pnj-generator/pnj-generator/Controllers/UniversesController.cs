@@ -37,7 +37,7 @@ public class UniversesController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<ActionResult<Universe>> Create(UniverseCreateDto dto)
+    public async Task<ActionResult<Universe>> Create(UniverseCreateDTO dto)
     {
         var universe = new Universe
         {
@@ -45,7 +45,9 @@ public class UniversesController : ControllerBase
             Name = dto.Name,
             Era = dto.Era,
             Description = dto.Description,
-            DiceRule = dto.DiceRule
+            DiceRule = dto.DiceRule,
+            HasModifiers = dto.HasModifiers,
+            ModifierType = dto.ModifierType
         };
 
         _db.Universes.Add(universe);
@@ -55,7 +57,7 @@ public class UniversesController : ControllerBase
     }
 
     [HttpPut("{id:guid}")]
-    public async Task<IActionResult> Update(Guid id, UniverseCreateDto dto)
+    public async Task<IActionResult> Update(Guid id, UniverseCreateDTO dto)
     {
         var universe = await _db.Universes.FindAsync(id);
         if (universe is null) return NotFound();
@@ -64,6 +66,8 @@ public class UniversesController : ControllerBase
         universe.Era = dto.Era;
         universe.Description = dto.Description;
         universe.DiceRule = dto.DiceRule;
+        universe.HasModifiers = dto.HasModifiers;
+        universe.ModifierType = dto.ModifierType;
 
         await _db.SaveChangesAsync();
         return NoContent();
