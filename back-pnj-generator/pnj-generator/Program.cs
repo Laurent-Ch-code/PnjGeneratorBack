@@ -16,7 +16,11 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AngularDev", policy =>
     {
         policy
-            .WithOrigins("http://localhost:4200")
+            .WithOrigins(
+                "http://localhost:4200",
+                "https://pnj-generator.web.app",
+                "https://pnj-generator.firebaseapp.com"
+            )
             .AllowAnyHeader()
             .AllowAnyMethod();
     });
@@ -26,7 +30,7 @@ builder.Services.AddCors(options =>
 builder.Services.AddDbContext<AppDbContext>(options =>
 {
     options.UseNpgsql(
-        builder.Configuration.GetConnectionString("Postgres")
+        builder.Configuration.GetConnectionString("DefaultConnection")
     );
 });
 
