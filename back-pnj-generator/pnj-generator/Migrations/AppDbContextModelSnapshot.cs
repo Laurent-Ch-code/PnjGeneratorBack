@@ -33,9 +33,11 @@ namespace pnj_generator.Migrations
                         .HasColumnType("text");
 
                     b.Property<string>("DiceType")
-                        .IsRequired()
                         .HasMaxLength(10)
                         .HasColumnType("character varying(10)");
+
+                    b.Property<int>("GenerationType")
+                        .HasColumnType("integer");
 
                     b.Property<bool>("HasModifiers")
                         .HasColumnType("boolean");
@@ -43,7 +45,13 @@ namespace pnj_generator.Migrations
                     b.Property<int?>("MaxDice")
                         .HasColumnType("integer");
 
-                    b.Property<int>("MinDice")
+                    b.Property<int?>("MaxValue")
+                        .HasColumnType("integer");
+
+                    b.Property<int?>("MinDice")
+                        .HasColumnType("integer");
+
+                    b.Property<int?>("MinValue")
                         .HasColumnType("integer");
 
                     b.Property<string>("Name")

@@ -62,9 +62,14 @@ namespace pnj_generator.Services
             // Tire un sexe aléatoire
             var gender = (Gender)_random.Next(0, 3);
 
+            // Si genre neutre, choisir aléatoirement Male/Female pour piocher les prénoms
+            var genderForNames = gender == Gender.Neutral
+                ? (_random.Next(0, 2) == 0 ? Gender.Male : Gender.Female)
+                : gender;
+
             // Récupère des fragments selon le sexe ET le type
             var firstNames = await _db.FragmentIdentities
-                .Where(f => f.UniverseId == universeId && f.Gender == gender && f.Type == FragmentType.FirstName)
+                .Where(f => f.UniverseId == universeId && f.Gender == genderForNames && f.Type == FragmentType.FirstName)
                 .ToListAsync();
 
             var lastNames = await _db.FragmentIdentities
@@ -93,7 +98,7 @@ namespace pnj_generator.Services
 
             // Sélection aléatoire
             var firstName = firstNames.Any() ? firstNames[_random.Next(firstNames.Count)].Value : "Unknown";
-            var lastName = lastNames.Any() ? lastNames[_random.Next(lastNames.Count)].Value : "Stranger";
+            var lastName = lastNames.Any() ? lastNames[_random.Next(lastNames.Count)].Value : ""; // Vide si pas de nom
             var alias = _random.Next(0, 2) == 0 && aliases.Any() ? aliases[_random.Next(aliases.Count)].Value : null;
             var age = _random.Next(18, 60); // Adulte par défaut V1
 
@@ -127,9 +132,12 @@ namespace pnj_generator.Services
             foreach (var charact in characteristics)
             {
                 // Jet de dés selon minDice/maxDice
-                int nbDice = charact.MaxDice.HasValue && charact.MaxDice > charact.MinDice
-                    ? _random.Next(charact.MinDice, charact.MaxDice.Value + 1)
-                    : charact.MinDice;
+                int minDice = charact.MinDice ?? 1;
+                int maxDice = charact.MaxDice ?? minDice;
+
+                int nbDice = maxDice > minDice
+                    ? _random.Next(minDice, maxDice + 1)
+                    : minDice;
 
                 //int value = RollDice(nbDice, GetDiceSize(charact.DiceType));
 

@@ -2462,8 +2462,7 @@
       },
       "Characteristic": {
         "required": [
-          "diceType",
-          "minDice",
+          "generationType",
           "name",
           "universeId"
         ],
@@ -2489,16 +2488,30 @@
             "type": "string",
             "nullable": true
           },
+          "generationType": {
+            "$ref": "#/components/schemas/CharacteristicGenerationType"
+          },
           "diceType": {
             "maxLength": 10,
-            "minLength": 1,
-            "type": "string"
+            "type": "string",
+            "nullable": true
           },
           "minDice": {
             "type": "integer",
-            "format": "int32"
+            "format": "int32",
+            "nullable": true
           },
           "maxDice": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "minValue": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "maxValue": {
             "type": "integer",
             "format": "int32",
             "nullable": true
@@ -2524,11 +2537,25 @@
             "type": "string",
             "nullable": true
           },
+          "generationType": {
+            "$ref": "#/components/schemas/CharacteristicGenerationType"
+          },
           "minDice": {
             "type": "integer",
-            "format": "int32"
+            "format": "int32",
+            "nullable": true
           },
           "maxDice": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "minValue": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "maxValue": {
             "type": "integer",
             "format": "int32",
             "nullable": true
@@ -2542,6 +2569,14 @@
           }
         },
         "additionalProperties": false
+      },
+      "CharacteristicGenerationType": {
+        "enum": [
+          0,
+          1
+        ],
+        "type": "integer",
+        "format": "int32"
       },
       "Culture": {
         "type": "object",

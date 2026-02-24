@@ -52,9 +52,12 @@ namespace pnj_generator.Controllers.Features
                 UniverseId = universeId,
                 Name = dto.Name,
                 Description = dto.Description,
+                GenerationType = dto.GenerationType,
                 DiceType = dto.DiceType,
                 MinDice = dto.MinDice,
                 MaxDice = dto.MaxDice,
+                MinValue = dto.MinValue,
+                MaxValue = dto.MaxValue,
                 HasModifiers = dto.HasModifiers
             };
 
@@ -79,9 +82,12 @@ namespace pnj_generator.Controllers.Features
 
             characteristic.Name = dto.Name;
             characteristic.Description = dto.Description;
+            characteristic.GenerationType = dto.GenerationType;
             characteristic.DiceType = dto.DiceType;
             characteristic.MinDice = dto.MinDice;
             characteristic.MaxDice = dto.MaxDice;
+            characteristic.MinValue = dto.MinValue;
+            characteristic.MaxValue = dto.MaxValue;
             characteristic.HasModifiers = dto.HasModifiers;
 
             await _db.SaveChangesAsync();

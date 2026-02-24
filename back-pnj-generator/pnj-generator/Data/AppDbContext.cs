@@ -123,7 +123,7 @@ namespace pnj_generator.Data
                 entity.ToTable("characteristics");
                 entity.HasKey(c => c.Id);
                 entity.Property(c => c.Name).IsRequired().HasMaxLength(100);
-                entity.Property(c => c.DiceType).IsRequired().HasMaxLength(10);
+                entity.Property(c => c.DiceType).HasMaxLength(10);
                 entity.Property(c => c.MinDice);
                 entity.Property(c => c.MaxDice);
                 entity.Property(c => c.HasModifiers).IsRequired();
